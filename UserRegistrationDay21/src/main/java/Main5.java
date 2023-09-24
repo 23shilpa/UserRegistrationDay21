@@ -1,10 +1,10 @@
-class InvalidPasswordException extends Exception {
-    public InvalidPasswordException(String message) {
+class InvalidPasswordException1 extends Exception {
+    public InvalidPasswordException1(String message) {
         super(message);
     }
 }
 
-public class Main4 {
+public class Main5 {
     public static void main(String[] args) {
         try {
             String password = enterPassword();
@@ -26,6 +26,19 @@ public class Main4 {
         // Rule 1: Minimum 8 characters
         if (password.length() < 8) {
             throw new InvalidPasswordException1("Password must be at least 8 characters long.");
+        }
+
+        // Rule 2: Should have at least 1 uppercase character
+        boolean hasUpperCase = false;
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                hasUpperCase = true;
+                break;
+            }
+        }
+
+        if (!hasUpperCase) {
+            throw new InvalidPasswordException1("Password must contain at least 1 uppercase character.");
         }
 
         // Additional password rules can be added here.
