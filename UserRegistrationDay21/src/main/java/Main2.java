@@ -10,7 +10,7 @@ public class Main2 {
             String email = enterEmail();
             validateEmail(email);
             System.out.println("Valid email: " + email);
-        } catch (InvalidEmailException e) {
+        } catch (InvalidEmailException1 e) {
             System.out.println("Invalid email: " + e.getMessage());
         }
     }
@@ -22,31 +22,31 @@ public class Main2 {
         return scanner.nextLine();
     }
 
-    public static void validateEmail(String email) throws InvalidEmailException {
+    public static void validateEmail(String email) throws InvalidEmailException1 {
         // Regular expression pattern for a valid email address
         String regex = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
 
         if (!email.matches(regex)) {
-            throw new InvalidEmailException("Invalid email format.");
+            throw new InvalidEmailException1("Invalid email format.");
         }
 
         // Split the email into parts
         String[] parts = email.split("@");
         if (parts.length != 2) {
-            throw new InvalidEmailException("Invalid email format.");
+            throw new InvalidEmailException1("Invalid email format.");
         }
 
         String[] domainParts = parts[1].split("\\.");
         if (domainParts.length < 2 || domainParts.length > 3) {
-            throw new InvalidEmailException("Invalid email format.");
+            throw new InvalidEmailException1("Invalid email format.");
         }
 
         if (!domainParts[0].equals("bl") || !domainParts[1].equals("co")) {
-            throw new InvalidEmailException("Invalid email format.");
+            throw new InvalidEmailException1("Invalid email format.");
         }
 
         if (domainParts.length == 3 && !domainParts[2].equals("in")) {
-            throw new InvalidEmailException("Invalid email format.");
+            throw new InvalidEmailException1("Invalid email format.");
         }
     }
 }
